@@ -38,9 +38,9 @@ const addValues = (arr, value) => {
 };
 
 const addNumbers = (num, arr, times, callback) => {
- 
 
-  for ( let count = 0; count < times; count++) {
+
+  for (let count = 0; count < times; count++) {
     callback(arr, num);
 
 
@@ -81,8 +81,8 @@ Write a function named removeWithForEach that produces the same output as challe
 ------------------------------------------------------------------------------------------------ */
 
 const removeWithForEach = (arr, callback) => {
-  arr.forEach (num => {
-    callback(num,arr);
+  arr.forEach(num => {
+    callback(num, arr);
 
   })
   return arr;
@@ -100,8 +100,12 @@ This anonymous function should accept up to three arguments: the element, the in
 ------------------------------------------------------------------------------------------------ */
 
 const removeWithAnon = (arr) => {
-  let anon = (element, index, arr);
-  
+  arr.forEach((num) => {
+    if (num % 3 === 2) {
+      return arr.pop();
+    }
+  });
+  return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------

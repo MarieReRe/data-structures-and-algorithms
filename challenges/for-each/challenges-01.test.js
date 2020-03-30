@@ -81,7 +81,12 @@ Write a function named removeWithForEach that produces the same output as challe
 ------------------------------------------------------------------------------------------------ */
 
 const removeWithForEach = (arr, callback) => {
-  if (let i =)
+  arr.forEach (num => {
+    callback(num,arr);
+
+  })
+  return arr;
+
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -95,7 +100,8 @@ This anonymous function should accept up to three arguments: the element, the in
 ------------------------------------------------------------------------------------------------ */
 
 const removeWithAnon = (arr) => {
-  // Solution code here...
+  let anon = (element, index, arr);
+  
 };
 
 /* ------------------------------------------------------------------------------------------------

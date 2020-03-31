@@ -9,7 +9,7 @@ Write a function that appends ' The end.' to a string, and returns the modified 
 ------------------------------------------------------------------------------------------------ */
 
 const appendTheEnd = (str) => {
-  let string = `${str} The end. `
+  let string = `${str} The end.`
   return string;
   // Solution code here...
 };
@@ -29,7 +29,7 @@ console.log(a) prints [1, 2, 3, 1]
 
 const appendFirstToLast = (arr) => {
   arr.push(arr[0]);
-  // Solution code here...
+  
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -48,6 +48,7 @@ console.log(a) prints { fullName: 'Octavia Estelle Butler', yearBorn: 1947 }
 ------------------------------------------------------------------------------------------------ */
 
 const addBirthYearProperty = (obj, year) => {
+  obj.yearBorn = year;
   // Solution code here...
 };
 

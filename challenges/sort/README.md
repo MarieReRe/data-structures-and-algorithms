@@ -1,4 +1,4 @@
-![CF](https://i.imgur.com/7v5ASc8.png) array.sort()
+ array.sort()
 =======
 ## Overview
 `array.sort( [compareFunction] )` sorts an array in place -- mutating the array. There is no return value.

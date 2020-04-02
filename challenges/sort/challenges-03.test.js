@@ -87,7 +87,11 @@ For example, [1, 14, 0.2, -281, 54782] is only correctly sorted in that order.
 ------------------------------------------------------------------------------------------------ */
 
 const sortNumbersByLength = (arr) => {
-  
+  arr.sort((a, b) => {
+    return a.toString().length - b.toString().length;
+});
+return arr;
+    
 };
 
 /*-----------------------------------------------------------------------------------------------
@@ -109,7 +113,10 @@ const people = [
 ];
 
 const sortPeople = (arr) => {
-  // Solution code here...
+  arr.sort( function(sortA,sortB) {
+    return sortA.lastName.localeCompare(sortB.lastName);
+  });
+  return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -123,7 +130,17 @@ If two people have the same full name, the younger one should come first. Do not
 ------------------------------------------------------------------------------------------------ */
 
 const sortPeopleBetter = (arr) => {
-  // Solution code here...
+  arr.sort ( (a,b) => {
+    return a.age - b.age;
+  });
+  arr.sort( function(a,b) {
+    return a.firstName.localeCompare(b.firstName);
+  });
+  arr.sort( function(a,b) {
+    return a.lastName.localeCompare(b.lastName);
+  });
+  
+  return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------

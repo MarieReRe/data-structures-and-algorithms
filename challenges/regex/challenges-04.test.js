@@ -14,6 +14,8 @@ For example:
 
 const isNum = (input) => {
   // Solution code here...
+  let containsNum =/.\d/;
+  return containsNum.test(input);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -26,6 +28,7 @@ Return an array containing all the matches.
 
 const isCapitalized = (str) => {
   // Solution code here...
+  return str.match(/\b[A-Z]\w*/g) || [];
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -35,7 +38,14 @@ Write a function named citiesAtoJ that takes in an array of city names and uses 
 ------------------------------------------------------------------------------------------------ */
 
 const citiesAtoJ = (arr) => {
-  // Solution code here...
+  let cityAtoJ = [];
+  let expAtoJ = /^[A-J]/;
+  arr.forEach(city => {
+      if (expAtoJ.test(city)){
+          cityAtoJ.push(city)
+      }
+  });
+  return cityAtoJ;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -50,8 +60,10 @@ If the user enters any of these four inputs, return true. For any other input, r
 Do not use the vertical bar (pipe) in your pattern.
 ------------------------------------------------------------------------------------------------ */
 
+
 const matchMonth = (input) => {
-  // Solution code here...
+  let regexMonth = /\b[Oo]ct(ober)?\b/;
+  return regexMonth.test(input);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -65,8 +77,11 @@ The expected output of "Hello, and have a wonderful day!" is ["and ", "have ", "
 ------------------------------------------------------------------------------------------------ */
 
 const noPunctuation = str => {
-  // Solution code here...
-};
+  //   return str.match(/\b[A-Z]*[a-z]*[0-9]*\s\b/g);
+  
+    let arr = str.match(/\b(\w+)\s/g);
+   return arr;
+  };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 6
@@ -81,7 +96,7 @@ For example, 'Welcome to Code 301!' will return 'W_lc_m_ t_ C_d_ 301!'.
 ------------------------------------------------------------------------------------------------ */
 
 let hangman = (str) => {
-  // Solution code here...
+  return str.replace(/[AEIOU]|[aeiou]/g, '_');
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -98,6 +113,13 @@ const seashells = 'She sells seashells by the seashore. The shells she sells are
 
 const findShells = (str) => {
   // Solution code here...
+  let emptyResult = [];
+  let regex = /\w*ells/gi;
+  if (str.match(regex)) {
+    return str.match(regex);
+  } else {
+    return emptyResult;
+  }
 };
 
 /* ------------------------------------------------------------------------------------------------

@@ -211,6 +211,21 @@ For example, extractVowels('gregor') returns ['grgr', 'eo'].
 
 Similarly, extractVowels('The quick brown fox') returns ['Th qck brwn fx', 'eioou']
 ------------------------------------------------------------------------------------------------ */
+// Works still
+// const extractVowels = (str) => {
+// var vowels = ['a', 'e', 'o', 'i', 'u']
+// const removeVowels = (str) => {
+//   let newStr = '';
+//   for (let i = 0; i < str.length; i++) {
+//     let letter = str.slice(i,(i + 1));
+//     if(vowels.every(vowel => {
+//       return vowel !== letter;
+//     })) {
+//       newStr += letter;
+//     }
+//   }
+//   return newStr;
+// };
 
 const extractVowels = (str) => {
   const vowels = ['a','e','i','o','u'];

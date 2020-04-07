@@ -1,7 +1,7 @@
 {
   "name": "3-code-challenges",
   "version": "1.0.0",
-  "description": "",
+  "description": "![CF](https://i.imgur.com/7v5ASc8.png)  Object Iteration\r =======\r ## Overview\r Just like with arrays, you'll often want to iterate over objects. But unlike arrays, objects have more than just one moving part ... and very often, they go deeper than just a single property.",
   "main": "index.js",
   "scripts": {
     "test": "jest --coverage --verbose",

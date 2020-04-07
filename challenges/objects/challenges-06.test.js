@@ -12,9 +12,18 @@ const courseInfo = { name: 'Code 301', duration: { dayTrack: '4 weeks', eveningT
   finalExam: true
 };
 
+// const getCourseKeys = (obj) => {
+//   let arr = [];
+//   for (let key in obj){
+//     arr.push(key);
+//   }
+//   return arr;
+// };
+
 const getCourseKeys = (obj) => {
-  // Solution code here...
+  return Object.keys(obj);
 };
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
@@ -70,7 +79,9 @@ let characters = [
 
 const getHouses = (arr) => {
   let houses = [];
-  // Solution code here...
+  arr.forEach(person => {
+    houses.push(person.house);
+  });
   return houses;
 };
 
@@ -87,8 +98,21 @@ hasChildrenValues(characters, 'Sansa') will return false
 ------------------------------------------------------------------------------------------------ */
 
 const hasChildrenValues = (arr, character) => {
-  // Solution code here...
-
+  // let hasChildren = false;
+  // arr.forEach(char => {
+  //   if(char.name === character) {
+  //     if (char.children.length > 0) {
+  //       hasChildren = true;
+  //     }
+  //   }
+  // });
+  // return hasChildren;
+  for (const person of Object.values(arr)){
+    if (person.name === character) {
+      return person.children.length > 0;
+    }
+  }
+  return false; 
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -98,9 +122,24 @@ Write a function named hasChildrenEntries that is similar to your hasChildrenVal
 
 The input and output of this function are the same as the input and output from challenge 3.
 ------------------------------------------------------------------------------------------------ */
-
+// thank you chase 
 const hasChildrenEntries = (arr, character) => {
-  // Solution code here...
+  // let hasChildren = false;
+  // arr.forEach(char => {
+  //   let charEntries = Object.entries(char);
+  //   if(charEntries[0][1] === character) {
+  //     if (charEntries[2][1].length > 0) {
+  //       hasChildren = true;
+  //     }
+  //   }
+  // });
+  // return hasChildren;
+  for (const person of Object.entries(arr)[0]){
+    if (person.name === character) {
+      return person.children.length > 0;
+    }
+  }
+  return false; 
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -110,7 +149,17 @@ Write a function named totalCharacters that takes in an array and returns the nu
 ------------------------------------------------------------------------------------------------ */
 
 const totalCharacters = (arr) => {
-  // Solution code here...
+  const charArray = [];
+  arr.forEach(character => {
+    charArray.push(character.name);
+    if(character.spouse){
+      charArray.push(character.spouse);
+    }
+    character.children.forEach(child => {
+      charArray.push(child);
+    });
+  });
+  return charArray.length;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -123,12 +172,26 @@ All of these objects should be added to an array named "sizes". Return the "size
 For example: [{ house: 'Stark', members: 7 }, { house: 'Arryn', members: 3 }, ... ].
 ------------------------------------------------------------------------------------------------ */
 
-const houseSize = (arr) => {
-  const sizes = [];
-  // Solution code here...
-  return sizes;
+const houseCharacters = obj => {
+  let houseChars = [];
+  houseChars.push(obj.name);
+  if(obj.spouse){
+    houseChars.push(obj.spouse);
+  }
+  obj.children.forEach(child => {
+    houseChars.push(child);
+  });
+  return houseChars.length;
 };
 
+const houseSize = (arr) => {
+  const sizes = [];
+  arr.forEach(char => {
+    sizes.push({ house: `${char.house}`, members: houseCharacters(char)});
+  });
+  console.log(sizes);
+  return sizes;
+};
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 7 - Stretch Goal
 
@@ -146,10 +209,24 @@ For example: [ { house: 'Stark', members: 6 }, { house: 'Arryn', members: 2 }, .
 ------------------------------------------------------------------------------------------------ */
 
 const deceasedSpouses = ['Catelyn', 'Lysa', 'Robert', 'Khal Drogo', 'Alerie'];
-
 const houseSurvivors = (arr) => {
   const survivors = [];
-  // Solution code here...
+  arr.forEach(item =>{
+    let values = Object.values(item);
+    let count = 0;
+    count = count + 1 + values[2].length;
+    if(values[1]) {
+        if(!deceasedSpouses.some(deadguy =>{
+            return deadguy === values[1];
+        })){
+      count++;
+        }
+    }
+    let newObj = new Object;
+     newObj.house = values[3];
+     newObj.members = count;
+    survivors.push(newObj);
+  });
   return survivors;
 };
 

@@ -9,7 +9,9 @@ Note: You may not use the array's built-in length property.
 ------------------------------------------------------------------------------------------------ */
 
 const countNumberOfElements = (arr) => {
-  // Solution code here...
+  return arr.reduce((accumulator, value, index) => {
+    return accumulator + 1;
+  }, 0);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -36,7 +38,8 @@ let starWarsData = [{
   skin_color: 'gold',
   eye_color: 'yellow',
   birth_year: '112BBY',
-  gender: 'n/a'},
+  gender: 'n/a'
+},
 {
   name: 'R2-D2',
   height: '96',
@@ -69,7 +72,11 @@ let starWarsData = [{
 }];
 
 const returnNames = (arr) => {
-  // Solution code here...
+  let newArray = arr.reduce((accumulator, value, index) => {
+    accumulator.push(value.name);
+    return accumulator;
+  }, []);
+  return newArray;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -81,7 +88,16 @@ Note: You must use reduce for this challenge. You may not use the built-in .reve
 ------------------------------------------------------------------------------------------------ */
 
 const reversedString = (str) => {
-  // Solution code here...
+  const strArr = str.split('');
+  return strArr.reduce((accumulator, value, index) => value + accumulator, '');
+
+
+  // also works
+  // {
+  //   accumulator.unshift(value);
+  //   return accumulator;
+  // }),[]);
+  // return strArrReversed.join("");
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -132,9 +148,22 @@ const characters = [
     house: 'Snow',
   },
 ];
-
+//refactor to turnary
 const countNumberOfChildren = (arr) => {
-  // Solution code here...
+  let childCount = arr.reduce((accumulator, object) => {
+    if (object.children) {
+      return accumulator + object.children.length;
+    } else {
+      return accumulator;
+    }
+  }, 0);
+  return childCount;
+
+  // return characters.reduce(val => {
+  //   arr.push(val.children);
+  //   return arr.length;
+  // }, []);
+  // })
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -146,7 +175,12 @@ Hint: The accumulator should begin as { count: 0, sum: 0 }
 ------------------------------------------------------------------------------------------------ */
 
 const calculateAverage = (arr) => {
-  // Solution code here...
+  let countSum = arr.reduce((accumulator, value, index) => {
+    accumulator.count++;
+    accumulator.sum = accumulator.sum + value;
+    return accumulator;
+  }, { count: 0, sum: 0 });
+  return countSum.sum / countSum.count;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -167,7 +201,15 @@ const isPrime = (value) => {
 };
 
 const countPrimeNumbers = (arr) => {
-  // Solution code here...
+  let primeNumberCount = arr.reduce((accumulator, value, index) => {
+    //change to turnary later
+  if (isPrime(value)) {
+    return accumulator + 1;
+  } else {
+    return accumulator;
+  }
+}, 0);
+return primeNumberCount;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -210,7 +252,12 @@ const snorlaxData = {
 };
 
 const extractStat = (statName, arr) => {
-  // Solution code here...
+  return arr.reduce((accumulator, value, index) => {
+    if(value.stat.name == statName){
+      accumulator = value;
+    }
+    return accumulator;
+  }, {})
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -224,7 +271,7 @@ Write a function named extractChildren that, given the array of characters from 
 ------------------------------------------------------------------------------------------------ */
 
 const extractChildren = (arr) => {
-  // Solution code here...
+  
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -245,7 +292,7 @@ describe('Testing challenge 1', () => {
 
 describe('Testing challenge 2', () => {
   test('It should return an array continaing the names of the characters', () => {
-    expect(returnNames(starWarsData)).toStrictEqual([ 'Luke Skywalker', 'C-3PO', 'R2-D2', 'Darth Vader', 'Leia Organa' ]);
+    expect(returnNames(starWarsData)).toStrictEqual(['Luke Skywalker', 'C-3PO', 'R2-D2', 'Darth Vader', 'Leia Organa']);
     expect(returnNames(starWarsData).length).toStrictEqual(5);
   });
 });
@@ -264,7 +311,7 @@ describe('Testing challenge 4', () => {
 
 describe('Testing challenge 5', () => {
   test('It should return the average of the numbers in the array', () => {
-    expect(calculateAverage([18, 290, 37, 4, 55, 16, 7, 85 ])).toStrictEqual(64);
+    expect(calculateAverage([18, 290, 37, 4, 55, 16, 7, 85])).toStrictEqual(64);
   });
 });
 
@@ -282,7 +329,7 @@ describe('Testing challenge 7', () => {
 
 describe('Testing challenge 8', () => {
   test('It should return an array containing the names of the children', () => {
-    expect(extractChildren(characters)).toStrictEqual([ 'Robb', 'Sansa', 'Arya', 'Bran', 'Rickon', 'Drogon', 'Rhaegal', 'Viserion', 'Margaery', 'Loras' ]);
+    expect(extractChildren(characters)).toStrictEqual(['Robb', 'Sansa', 'Arya', 'Bran', 'Rickon', 'Drogon', 'Rhaegal', 'Viserion', 'Margaery', 'Loras']);
     expect(extractChildren(characters).length).toStrictEqual(10);
   });
 });

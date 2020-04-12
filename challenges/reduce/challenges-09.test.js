@@ -186,7 +186,7 @@ const calculateAverage = (arr) => {
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 6
 
-Write a function named countPrimeNumbers that, given an array elements as input, uses reduce to count the number of elements that are prime numbers.
+Write a function named countPrimeNu mbers that, given an array elements as input, uses reduce to count the number of elements that are prime numbers.
 
 You are welcome to use the provided isPrime function.
 ------------------------------------------------------------------------------------------------ */
@@ -253,7 +253,7 @@ const snorlaxData = {
 
 const extractStat = (statName, arr) => {
   return arr.reduce((accumulator, value, index) => {
-    if(value.stat.name == statName){
+    if(value.stat.name === statName){
       accumulator = value;
     }
     return accumulator;
@@ -269,10 +269,15 @@ Write a function named extractChildren that, given the array of characters from 
 
 2) Then, uses reduce to return an array of all the children's names in the filtered array
 ------------------------------------------------------------------------------------------------ */
-
+// talk through with Brennan and chase over how to complete this...
 const extractChildren = (arr) => {
-  
-};
+  let newArr = arr.filter(character => character.name.match(/\w*a\w*/));
+  let answer = newArr.reduce((acc,val) => {
+   return acc.concat(val.children);
+  },[]);
+  answer.pop();
+  return answer;
+ };
 
 /* ------------------------------------------------------------------------------------------------
 TESTS

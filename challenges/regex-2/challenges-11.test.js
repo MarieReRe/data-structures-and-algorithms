@@ -69,13 +69,16 @@ For example, findTagNames(['<h1>Hello, world!</h1>', '<p>Welcome to my site</p>'
 findTagNames(['<div><h1>Hello, world!</h1></div>', '<p>Welcome to my site</p>']) returns ['/h1', '/div', '/p'].
 ------------------------------------------------------------------------------------------------ */
 
+//.reduce =reduves array to a single value
+//.match = retrieves result of a matching string against a regex
+// .map creates new array populated with result of calling a provided function of every element in the array
+//.slice extracts a section of a string and returns it as a new sring w/o modifying the original 
+
 const findTagNames = elements => {
     return elements.reduce( ( tags, value ) => {
     let matches = value.match(/<\/[a-z\d]+>/g).map( element => element.slice( 1,element.length-1 ));
     return tags.concat(matches);
   }, []);
-
-
 };
 
 /* ------------------------------------------------------------------------------------------------

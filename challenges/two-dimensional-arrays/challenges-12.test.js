@@ -28,10 +28,10 @@ const grandTotal = (stores) => {
     hourlySales.push(0);
   });
   stores.forEach(store => {
-    store.forEach((num, j) => {
+    store.forEach((num, i) => {
       let counter = 0;
       counter += num;
-      hourlySales[j] += counter;
+      hourlySales[i] += counter;
     });
   });
   return hourlySales;
@@ -49,9 +49,9 @@ Write a function named salesData that uses forEach to iterate over the hourlySal
 ------------------------------------------------------------------------------------------------ */
 
 const salesData = (hours, data) => {
-    let formattedArr = [];
+  let formattedArr = [];
   hours.forEach((hour, i) => {
-    formattedArr.push({ sales: `${data[i]} cookies`, time: hour});
+    formattedArr.push({ sales: `${data[i]} cookies`, time: hour });
   });
   return formattedArr;
 };
@@ -63,19 +63,30 @@ Write a function named howManyTreats that will return the quantity of treats you
 ------------------------------------------------------------------------------------------------ */
 
 const errands = [
-  { store: 'Grocery store',
-    items: [ { name: 'Eggs', quantity: 12 }, { name: 'Milk', quantity: 1 }, { name: 'Apples', quantity: 3 }]
+  {
+    store: 'Grocery store',
+    items: [{ name: 'Eggs', quantity: 12 }, { name: 'Milk', quantity: 1 }, { name: 'Apples', quantity: 3 }]
   },
-  { store: 'Drug store',
-    items: [ { name: 'Toothpaste', quantity: 1 }, { name: 'Toothbrush', quantity: 3 }, { name: 'Mouthwash',quantity: 1 } ]
+  {
+    store: 'Drug store',
+    items: [{ name: 'Toothpaste', quantity: 1 }, { name: 'Toothbrush', quantity: 3 }, { name: 'Mouthwash', quantity: 1 }]
   },
-  { store: 'Pet store',
-    items: [ { name: 'Cans of food', quantity: 8 }, { name: 'Treats', quantity: 24 }, { name: 'Leash', quantity: 1 } ]
+  {
+    store: 'Pet store',
+    items: [{ name: 'Cans of food', quantity: 8 }, { name: 'Treats', quantity: 24 }, { name: 'Leash', quantity: 1 }]
   }
 ];
 
 const howManyTreats = (arr) => {
-  // Solution code here...
+  let treatCount = 0;
+  arr.forEach(store => {
+    store.items.forEach(item => {
+      if(item.name === 'Treats') {
+        treatCount += item.quantity;
+      }
+    });
+  });
+  return treatCount;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -236,14 +247,14 @@ describe('Testing challenge 4', () => {
 
 describe('Testing challenge 5', () => {
   test('It should multiply all the numbers together', () => {
-    expect(calculateProduct([[1,2], [3,4], [5,6]])).toStrictEqual(720);
+    expect(calculateProduct([[1, 2], [3, 4], [5, 6]])).toStrictEqual(720);
   });
 
   test('It should return zero if there are any zeroes in the data', () => {
     expect(calculateProduct([[2, 3, 4, 6, 0], [4, 3, 7], [2, 4, 6]])).toStrictEqual(0);
   });
   test('It should work even if some of the arrays contain no numbers', () => {
-    expect(calculateProduct([[1,2], [], [3,4,5]])).toStrictEqual(120);
+    expect(calculateProduct([[1, 2], [], [3, 4, 5]])).toStrictEqual(120);
   });
 });
 

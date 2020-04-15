@@ -35,7 +35,6 @@ const grandTotal = (stores) => {
     });
   });
   return hourlySales;
-
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -180,7 +179,20 @@ let lowestWeeklyTemperatureData = [
 ];
 
 const lowestWeeklyAverage = (weather) => {
-  // Solution code here...
+    let lowestAverage = 90;
+  weather.forEach(week => {
+    let weeklyTotal = 0;
+    let dayCount = 0;
+    week.forEach(temp => {
+      weeklyTotal += temp;
+      dayCount++;
+    });
+    let weeklyAverage = weeklyTotal/dayCount;
+    if(weeklyAverage<lowestAverage) {
+      lowestAverage = weeklyAverage;
+    }
+  });
+  return lowestAverage;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -196,7 +208,17 @@ For example, excel('1,1,1\n4,4,4\n9,9,9') returns [3, 12, 27].
 ------------------------------------------------------------------------------------------------ */
 
 const excel = (str) => {
-  // Solution code here...
+  let sums = [];
+  let splitStr = str.split('\n');
+  splitStr.forEach(subStr => {
+    let subArr = subStr.split(',');
+    let sum = 0;
+    subArr.forEach(num => {
+      sum += parseInt(num);
+    });
+    sums.push(sum);
+  });
+  return sums;
 };
 
 /* ------------------------------------------------------------------------------------------------

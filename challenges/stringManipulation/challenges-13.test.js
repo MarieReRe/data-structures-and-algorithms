@@ -33,7 +33,10 @@ For example, (123) 456-7890 returns 1234567890
 ------------------------------------------------------------------------------------------------ */
 
 const standardizePhoneNumbers = (arr) => {
-  // Solution code here...
+  //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/substring
+  return arr.map(str => {
+    return `${str.substring(1,4)}${str.substring(6,9)}${str.substring(10,14)}`;
+  });
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -45,7 +48,7 @@ For example, 'abcdefg' returns 'bdf'
 ------------------------------------------------------------------------------------------------ */
 
 const onlyOddChars = (str) => {
-  // Solution code here...
+  
 };
 
 /* ------------------------------------------------------------------------------------------------

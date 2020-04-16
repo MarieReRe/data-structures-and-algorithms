@@ -76,7 +76,7 @@ Write a function named findAnything that takes in an array of strings, along wit
 ------------------------------------------------------------------------------------------------ */
 
 const findAnything = (arr, target) => {
-  // Solution code here...
+  return arr.filter(str => str.includes(target));
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -86,7 +86,11 @@ Write a function named findEvery that takes in an array of strings, along with a
 ------------------------------------------------------------------------------------------------ */
 
 const findEvery = (arr, target) => {
-  // Solution code here...
+  let happyCoder = true;
+  arr.forEach(str => {
+    !str.includes(target) ? happyCoder = false : happyCoder;
+  });
+  return happyCoder
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -129,7 +133,11 @@ For example, ['Tuesday', 'Monday', 'Wednesday and Thursday', 'Tuesday 2', 'Thurs
 const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
 const sortByDay = (arr) => {
-  // Solution code here...
+  return daysOfWeek.map(day => {
+    return arr.filter((eventString) => {
+      return eventString.includes(day);
+    })
+  })
 };
 
 /* ------------------------------------------------------------------------------------------------

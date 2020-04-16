@@ -35,7 +35,7 @@ For example, (123) 456-7890 returns 1234567890
 const standardizePhoneNumbers = (arr) => {
   //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/substring
   return arr.map(str => {
-    return `${str.substring(1,4)}${str.substring(6,9)}${str.substring(10,14)}`;
+    return `${str.substring(1, 4)}${str.substring(6, 9)}${str.substring(10, 14)}`;
   });
 };
 
@@ -48,7 +48,11 @@ For example, 'abcdefg' returns 'bdf'
 ------------------------------------------------------------------------------------------------ */
 
 const onlyOddChars = (str) => {
-  
+  let newStr = '';
+  for (let i = 1; i < str.length; i += 2) {
+    newStr += str.charAt(i);
+  }
+  return newStr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -151,7 +155,7 @@ describe('Testing challenge 1', () => {
   test('It should return the first letter of each element of the array', () => {
     const words = ['apple', 'banana', 'cantaloupe'];
 
-    expect(firstLetters(words)).toStrictEqual(['a','b','c']);
+    expect(firstLetters(words)).toStrictEqual(['a', 'b', 'c']);
     expect(firstLetters(['a', 'b', 'c', 'd'])).toStrictEqual(['a', 'b', 'c', 'd']);
     expect(firstLetters([])).toStrictEqual([]);
   });
